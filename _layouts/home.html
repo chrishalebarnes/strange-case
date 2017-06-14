@@ -1,0 +1,35 @@
+---
+---
+<html>
+  <head>
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/node_modules/reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/node_modules/reveal.js/css/theme/black.css">
+    {% assign stylesheets = site.static_files | where_exp: "stylesheet", "stylesheet.path contains '/stylesheets/'" %}
+    {% for stylesheet in stylesheets %}
+      <link rel="stylesheet" href="{{ stylesheet.path }}">
+    {% endfor %}
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        {{ content }}
+      </div>
+    </div>
+    <script src="{{ site.url }}{{ site.baseurl }}/node_modules/reveal.js/js/reveal.js"></script>
+    <script src="{{ site.url }}{{ site.baseurl }}/node_modules/reveal.js/lib/js/head.min.js"></script>
+    <script>
+      Reveal.initialize({
+        dependencies: [
+          { src: '{{ site.url }}{{ site.baseurl }}/node_modules/reveal.js/lib/js/classList.js', condition: function () { return !document.body.classList; } },
+          { src: '{{ site.url }}{{ site.baseurl }}/node_modules/reveal.js/plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+          { src: '{{ site.url }}{{ site.baseurl }}/node_modules/reveal.js/plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+          { src: '{{ site.url }}{{ site.baseurl }}/node_modules/reveal.js/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+          { src: '{{ site.url }}{{ site.baseurl }}/node_modules/reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: '{{ site.url }}{{ site.baseurl }}/node_modules/reveal.js/plugin/notes/notes.js', async: true },
+          { src: '{{ site.url }}{{ site.baseurl }}/node_modules/reveal.js/plugin/math/math.js', async: true }
+        ]
+      });
+    </script>
+  </body>
+</html>

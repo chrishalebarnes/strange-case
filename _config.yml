@@ -1,0 +1,24 @@
+baseurl: '/strange-case'
+url: 'https://username.github.io'
+repository: username/strange-case
+github: [metadata]
+collections:
+  - slides
+defaults:
+  - scope:
+      collection: slides
+    values:
+      layout: home
+      title: Strange Case
+sass:
+  sass_dir: stylesheets
+exclude:
+  - .gitignore
+  - .nvmrc
+  - .ruby-version
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - package.json
+  - README.md
+

@@ -1,0 +1,17 @@
+---
+permalink: /
+---
+{% assign slides = site.static_files | where_exp: "slide", "slide.path contains '/slides/'" %}
+{% for file in slides %}
+  {% if file.extname == '.md'  %}
+    <section class="slide-{{ file.basename }}" data-markdown>
+      <textarea data-template>
+        {% include_relative {{ file.path }} %}
+      </textarea>
+    </section>
+  {% else %}
+    <section class="slide-{{ file.basename }}">
+      {% include_relative {{ file.path }} %}
+    </section>
+  {% endif %}
+{% endfor %}
